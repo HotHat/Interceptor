@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.10'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
+}
+
+test {
+    useJUnitPlatform()
+}
+
+task"create-dirs"  {
+
+    sourceSets*.java.srcDirs*.each {
+
+        it.mkdirs()
+
+    }
+
+    sourceSets*.resources.srcDirs*.each{
+
+        it.mkdirs()
+
+    }
+}
